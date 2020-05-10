@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DatingApp.API.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace DatingApp.API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     //[EnableCors("AllowOrigin")]
@@ -53,6 +55,7 @@ namespace DatingApp.API.Controllers
            return Ok(values);
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public IActionResult GetValue(int id)
         {
